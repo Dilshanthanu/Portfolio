@@ -1,0 +1,30 @@
+body{
+
+}
+
+nav{
+    background: linear-gradient(90deg, rgba(195,192,255,1) 0%, rgba(115,224,255,1) 16%, rgba(0,155,255,1) 100%);
+    overflow: hidden;
+    margin: -7px -8px 0 -7px;
+    padding: 16px;
+    text-align: center;
+}
+
+nav a{
+    float: left;
+    display: block;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    padding: 6px 20px;
+    text-decoration: none;
+    border: 1px solid;
+    border-radius: 5px;
+    margin-right: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+nav a:hover {
+    background-color: #fff;
+    color: #4d7ff5;
+}
