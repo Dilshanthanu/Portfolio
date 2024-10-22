@@ -1,9 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+:root{
+    --nav-text-color:#fff;
+    --bg-color:#250821;
+    --hover-color:#12f7ff;
+    --text-shadow:0 0 10px rgba(18, 247, 255, 0.6),
+    0 0 20px rgba(18, 247, 255, 0.6),
+    0 0 30px rgba(18, 247, 255, 0.6),
+    0 0 40px rgba(18, 247, 255, 0.6),
+    0 0 50px rgba(18, 247, 255, 0.6),
+    0 0 80px rgba(18, 247, 255, 0.6),
+    0 0 100px rgba(18, 247, 255, 0.6),
+    0 0 150px rgba(18, 247, 255, 0.6);
+    --dark-color:#292e33;
+    --big-font:2.5rem;
+    --normal-font:2rem;
+}
+
+
+
 body{
+    font-family: "Poppins",sans-serif;
+    background-color: var(--bg-color);
+    color: var(--nav-text-color);
 
 }
 
+span{
+    color: var(--hover-color);
+}
+
 nav{
-    background: linear-gradient(90deg, rgba(195,192,255,1) 0%, rgba(115,224,255,1) 16%, rgba(0,155,255,1) 100%);
+    /* background: linear-gradient(90deg, rgba(195,192,255,1) 0%, rgba(115,224,255,1) 16%, rgba(0,155,255,1) 100%); */
     overflow: hidden;
     margin: -7px -8px 0 -7px;
     padding: 16px;
@@ -14,27 +43,30 @@ nav{
 nav a{
     float: left;
     display: block;
-    color: #fff;
+    color: var(--nav-text-color);
     text-align: center;
     font-weight: 600;
     padding: 6px 20px;
     text-decoration: none;
-    border: 1px solid;
+    /* border: 1px solid; */
     border-radius: 5px;
     margin-right: 5px;
     transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
 nav a:hover {
-    background-color: #fff;
-    color: #4d7ff5;
+    color: var(--hover-color);
+    text-shadow: var(--text-shadow);
 }
 .menu-icon {
     display: none;
-    font-size: 30px;
+    font-size: 1.8rem;
     cursor: pointer;
-    color: #fff;
+    color: var(--dark-color);
+    background-color: var(--hover-color);
     float: left;
+    cursor: pointer;
+    border-radius: 3px;
 }
 
 @media (max-width: 768px) {
@@ -81,15 +113,103 @@ nav a:hover {
         height: 36px;
     }
 }
+section{
+    padding: 100px 10%;
+}
 
 footer{
     background-color: #414141;
     color: #ffffff;
     padding: 40px 0;
 }
+.home{
+   height: 100%;
+    
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+}
 
+.home-content{
+    max-width: 600px;
+}
 
+.home-content h1{
+ font-size: var(--big-font);
+ font-weight: 700;
+}
+.text-change{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.text-change h3{
+display: inline-flex;
+margin: 0;
+vertical-align: top;
+}
+.text-change h3 .text {
+    position: absolute;
+    display: flex;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
 
+.text-change h3 .text .letter {
+    display: inline-block;
+    transform-origin: center center 25px;
+}
+.text-change h3 .text .letter.out {
+    transform: rotateX(90deg);
+    transition: transform 0.32s cubic-bezier(0.6, 0, 0.7, 0.2);
+}
+
+.text-change h3 .text .letter.behind {
+    transform: rotateX(-90deg);
+    transition: none;
+}
+
+.text-change h3 .text .letter.in {
+    transform: rotateX(0deg);
+    transition: transform 0.32s cubic-bezier(0.6, 0, 0.7, 0.2);
+}
+
+.header-btn {
+    background-color: #ef3030;
+    padding: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 5px;
+    color: var(--nav-text-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.header-btn:hover {
+    background-color: #ef1616;
+    box-shadow: 0px 4px 20px rgba(68, 137, 241, 0.2);
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+.social-btn{
+ margin: 38px 0 0 0;
+ 
+}
+
+.social-btn a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-btn a svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--nav-text-color); /* Default color */
+    transition: fill 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.social-btn a:hover svg {
+    fill: #ef1616; /* Color change on hover */
+}
 .footer-container {
     display: flex;
     flex-wrap: wrap;
@@ -219,4 +339,7 @@ footer{
     .newsletter input[type="email"] {
         width: 100%;
     }
+}
+.name_container{
+    background-color: #00acee;
 }
