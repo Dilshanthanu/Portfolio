@@ -12,6 +12,8 @@ function toggleMenu() {
     }
 }
 
+
+
 var navbar = document.querySelector('nav');
 
 // Get the offset position of the navbar
@@ -138,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const message = document.getElementById('message').value;
 
         // Make a POST request to send the email using the backend
-        fetch('http://localhost:5000/send-email', {  // Replace with your backend URL when deployed
+        fetch('http://localhost:5000/api/send-email', {  // Replace with your backend URL when deployed
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
