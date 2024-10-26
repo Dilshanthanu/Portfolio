@@ -68,10 +68,11 @@ span{
 
 nav{
     /* background: linear-gradient(90deg, rgba(195,192,255,1) 0%, rgba(115,224,255,1) 16%, rgba(0,155,255,1) 100%); */
-    overflow: hidden;
-    margin: -7px -8px 0 -7px;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
     padding: 16px;
-    text-align: center;
+    margin: -7px -8px 0 -7px;
     justify-content: space-between;
 }
 
@@ -707,4 +708,61 @@ body.modal-open {
 .tooltip:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
+}
+
+
+.dropdown-container {
+    position: relative;
+}
+
+/* Dropdown label styling */
+.dropdown-label {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 6px 10px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+
+.dropdown-label::after {
+    content: ''; /* Placeholder for the icon */
+    background-image: url('https://img.icons8.com/ios-glyphs/30/ffffff/chevron-down.png'); /* Dropdown icon URL */
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Rotate the icon when dropdown is open */
+.dropdown-container.active .dropdown-label::after {
+    transform: rotate(180deg);
+}
+
+
+/* Dropdown options styling */
+.dropdown-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    color: #2e022d;
+    min-width: 100px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-options div {
+    padding: 8px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.dropdown-options div:hover {
+    background-color: #f2f2f2;
 }

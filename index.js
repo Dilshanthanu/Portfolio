@@ -13,6 +13,27 @@ function toggleMenu() {
 }
 
 
+const dropdownLabel = document.getElementById('dropdownLabel');
+const dropdownOptions = document.getElementById('dropdownOptions');
+
+// Toggle the display of options when the label is clicked
+dropdownLabel.addEventListener('click', () => {
+  dropdownOptions.style.display = dropdownOptions.style.display === 'block' ? 'none' : 'block';
+});
+
+// Function to handle option selection and navigate to a URL
+function selectOption(optionElement) {
+  const url = optionElement.getAttribute('data-url'); // Get the URL from data-url attribute
+  window.location.href = url; // Redirect to the selected URL
+  dropdownOptions.style.display = 'none'; // Hide options list after selection
+}
+
+// Close the dropdown if clicked outside
+document.addEventListener('click', function(event) {
+  if (!dropdownLabel.contains(event.target) && !dropdownOptions.contains(event.target)) {
+    dropdownOptions.style.display = 'none';
+  }
+});
 
 var navbar = document.querySelector('nav');
 
@@ -32,7 +53,18 @@ window.onscroll = function() {
     stickyNavbar();
 };
 
+function toggleDropdown() {
+    const dropdown = document.querySelector('.dropdown');
+    dropdown.classList.toggle('active');
+}
 
+// Close dropdown if clicked outside
+window.addEventListener('click', function(event) {
+    const dropdown = document.querySelector('.dropdown');
+    if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove('active');
+    }
+});
 const words = document.querySelectorAll(".text");
 let currentWordIndex = 0;
 const maxWordIndex = words.length - 1;
