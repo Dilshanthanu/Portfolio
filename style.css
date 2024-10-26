@@ -364,10 +364,10 @@ vertical-align: top;
     color: #ffffff;
     text-decoration: none;
     transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 .social-media img{
-    width: 20px;
-    height: 20px;
     margin-right: 5px;
 }
 
