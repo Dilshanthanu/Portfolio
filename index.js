@@ -2,14 +2,12 @@ function toggleMenu() {
     const navLinks = document.getElementById('nav-links');
     const menuIcon = document.getElementById('menu-icon');
 
-    // Toggle the 'active' class on #nav-links to show/hide the menu
     navLinks.classList.toggle('active');
 
-    // Change the menu icon between hamburger and close icons
     if (navLinks.classList.contains('active')) {
-        menuIcon.textContent = '✖'; // Close icon
+        menuIcon.textContent = '✖'; 
     } else {
-        menuIcon.textContent = '☰'; // Hamburger icon
+        menuIcon.textContent = '☰'; 
     }
 }
 
@@ -19,26 +17,23 @@ document.addEventListener('click', function(event) {
     const menuIcon = document.getElementById('menu-icon');
     if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
         navLinks.classList.remove('active');
-        menuIcon.textContent = '☰'; // Reset to hamburger icon when menu closes
+        menuIcon.textContent = '☰'; 
     }
 });
 
 const dropdownLabel = document.getElementById('dropdownLabel');
 const dropdownOptions = document.getElementById('dropdownOptions');
 
-// Toggle the display of options when the label is clicked
 dropdownLabel.addEventListener('click', () => {
   dropdownOptions.style.display = dropdownOptions.style.display === 'block' ? 'none' : 'block';
 });
 
-// Function to handle option selection and navigate to a URL
 function selectOption(optionElement) {
-  const url = optionElement.getAttribute('data-url'); // Get the URL from data-url attribute
-  window.location.href = url; // Redirect to the selected URL
-  dropdownOptions.style.display = 'none'; // Hide options list after selection
+  const url = optionElement.getAttribute('data-url'); 
+  window.location.href = url; 
+  dropdownOptions.style.display = 'none'; 
 }
 
-// Close the dropdown if clicked outside
 document.addEventListener('click', function(event) {
   if (!dropdownLabel.contains(event.target) && !dropdownOptions.contains(event.target)) {
     dropdownOptions.style.display = 'none';
@@ -49,18 +44,15 @@ function updateNavOnScroll(entries) {
         const navLink = document.querySelector(`nav a[href="#${entry.target.id}"]`);
 
         if (entry.isIntersecting) {
-            // If the section is in view, highlight the corresponding nav link
             navLink.classList.add('selected');
         } else {
-            // If the section is out of view, remove the highlight
             navLink.classList.remove('selected');
         }
     });
 }
 
-// Set up Intersection Observer
 const observer = new IntersectionObserver(updateNavOnScroll, {
-    threshold: 0.6 // 60% of the section should be visible to trigger the intersection
+    threshold: 0.6 
 });
 
 // Observe each section
@@ -71,10 +63,8 @@ sections.forEach(section => {
 
 var navbar = document.querySelector('nav');
 
-// Get the offset position of the navbar
 var sticky = navbar.offsetTop;
 
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function stickyNavbar() {
     if (window.pageYOffset > sticky) {
         navbar.classList.add("sticky");
