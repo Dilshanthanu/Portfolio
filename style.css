@@ -430,14 +430,16 @@ vertical-align: top;
     }
 
     .image-container {
-        margin: 20 auto; 
+        margin: 20px auto; 
     }
 
     .image-container img {
         width: 200px; 
         margin: 0; 
     }
-
+    .image-container::before{
+        width: 170%;
+    }
     .social-btn {
         text-align: center; 
     }
