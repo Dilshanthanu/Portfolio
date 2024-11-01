@@ -89,6 +89,8 @@ window.addEventListener('click', function(event) {
         dropdown.classList.remove('active');
     }
 });
+
+
 const words = document.querySelectorAll(".text");
 let currentWordIndex = 0;
 const maxWordIndex = words.length - 1;
@@ -163,22 +165,19 @@ document.addEventListener('DOMContentLoaded', function () {
     var btn = document.getElementById("contactButton");
     var span = document.getElementsByClassName("close")[0];
 
-    // Hide the modal by default
     modal.style.display = "none";
 
-    // Show modal when the "Contact Me" button is clicked
     btn.onclick = function() {
         modal.style.display = "flex"; 
         document.body.classList.add('modal-open'); 
     }
 
-    // Close the modal when the "X" (close) button is clicked
     span.onclick = function() {
         modal.style.display = "none"; 
         document.body.classList.remove('modal-open'); 
     }
 
-    // Close the modal if the user clicks outside of the modal
+
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";  
@@ -186,33 +185,49 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Handle form submission
-    document.getElementById("contactForm").onsubmit = function(event) {
-        event.preventDefault();  // Prevent form from reloading the page
 
-        // Get user input from form
+    document.getElementById("contactForm").onsubmit = function(event) {
+        event.preventDefault();  
+
+    
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
 
-        // Make a POST request to send the email using the backend
-        fetch('http://localhost:5000/api/send-email', {  // Replace with your backend URL when deployed
+        fetch('http://localhost:5000/api/send-email', {  
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ name, email, message }),  // Send form data in request body
+            body: JSON.stringify({ name, email, message }),  
         })
-        .then(response => response.json())  // Parse the response as JSON
+        .then(response => response.json())  
         .then(data => {
-            alert('Message sent!');  // Show success message
-            modal.style.display = "none";  // Close the modal
+            alert('Message sent!');  
+            modal.style.display = "none";  
             document.body.classList.remove('modal-open');  
-            document.getElementById("contactForm").reset();  // Clear the form
+            document.getElementById("contactForm").reset(); 
         })
         .catch(error => {
-            console.error('Error:', error);  // Log any errors to the console
-            alert('There was an issue sending your message.');  // Show error message
+            console.error('Error:', error);  
+            alert('There was an issue sending your message.');  
         });
     }
 });
+
+const text = "HI I'M Dilshan Thanushka";
+  const typingTextElement = document.getElementById('typingText');
+  let index = 0;
+
+  function typeEffect() {
+    if (index < text.length) {
+      typingTextElement.innerHTML += text[index];
+      index++;
+      setTimeout(typeEffect, 150); // Adjust typing speed (milliseconds)
+    }
+  }
+
+  window.onload = function () {
+    typingTextElement.innerHTML = ""; // Clear the initial text
+    typeEffect(); // Start typing effect
+  };
