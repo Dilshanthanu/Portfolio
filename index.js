@@ -1,17 +1,27 @@
 function toggleMenu() {
     const navLinks = document.getElementById('nav-links');
-    const menuIcon = document.getElementById('menu-icon-img');
+    const menuIcon = document.getElementById('menu-icon');
 
+    // Toggle the 'active' class on #nav-links to show/hide the menu
     navLinks.classList.toggle('active');
 
+    // Change the menu icon between hamburger and close icons
     if (navLinks.classList.contains('active')) {
-
-        menuIcon.src = 'https://img.icons8.com/?size=100&id=TSExQV5Lydnu&format=png&color=000000';
+        menuIcon.textContent = '✖'; // Close icon
     } else {
-        menuIcon.src = 'https://img.icons8.com/?size=100&id=68555&format=png&color=000000';
+        menuIcon.textContent = '☰'; // Hamburger icon
     }
 }
 
+// Close the menu if the user clicks outside of it
+document.addEventListener('click', function(event) {
+    const navLinks = document.getElementById('nav-links');
+    const menuIcon = document.getElementById('menu-icon');
+    if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+        navLinks.classList.remove('active');
+        menuIcon.textContent = '☰'; // Reset to hamburger icon when menu closes
+    }
+});
 
 const dropdownLabel = document.getElementById('dropdownLabel');
 const dropdownOptions = document.getElementById('dropdownOptions');
@@ -33,6 +43,30 @@ document.addEventListener('click', function(event) {
   if (!dropdownLabel.contains(event.target) && !dropdownOptions.contains(event.target)) {
     dropdownOptions.style.display = 'none';
   }
+});
+function updateNavOnScroll(entries) {
+    entries.forEach(entry => {
+        const navLink = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+
+        if (entry.isIntersecting) {
+            // If the section is in view, highlight the corresponding nav link
+            navLink.classList.add('selected');
+        } else {
+            // If the section is out of view, remove the highlight
+            navLink.classList.remove('selected');
+        }
+    });
+}
+
+// Set up Intersection Observer
+const observer = new IntersectionObserver(updateNavOnScroll, {
+    threshold: 0.6 // 60% of the section should be visible to trigger the intersection
+});
+
+// Observe each section
+const sections = document.querySelectorAll('section');
+sections.forEach(section => {
+    observer.observe(section);
 });
 
 var navbar = document.querySelector('nav');

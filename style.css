@@ -18,7 +18,9 @@
     --normal-font:2rem;
 }
 
-
+html {
+    scroll-behavior: smooth;
+}
 
 body{
     font-family: "Poppins",sans-serif;
@@ -65,9 +67,8 @@ body{
 span{
     color: var(--hover-color);
 }
-
+/* Navigation Bar styles */
 nav{
-    /* background: linear-gradient(90deg, rgba(195,192,255,1) 0%, rgba(115,224,255,1) 16%, rgba(0,155,255,1) 100%); */
     display: flex;
     align-items: center;
     color: #ffffff;
@@ -94,6 +95,70 @@ nav a:hover {
     color: var(--hover-color);
     text-shadow: var(--text-shadow);
 }
+
+nav a:active {
+    background: var(--hover-color);
+    color: var(--bg-color);
+}
+
+nav a.selected {
+    background: var(--hover-color);
+    color: var(--bg-color);
+}
+
+
+
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown-label {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 6px 10px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+
+.dropdown-label::after {
+    content: ''; 
+    background-image: url('https://img.icons8.com/ios-glyphs/30/ffffff/chevron-down.png'); 
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-container.active .dropdown-label::after {
+    transform: rotate(180deg);
+}
+
+.dropdown-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    color: #2e022d;
+    min-width: 100px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-options div {
+    padding: 8px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.dropdown-options div:hover {
+    background-color: #f2f2f2;
+}
 .menu-icon {
     display: none;
     font-size: 1.8rem;
@@ -104,39 +169,59 @@ nav a:hover {
 }
 
 @media (max-width: 768px) {
-
-    nav a {
+    nav a,
+    .dropdown-container { 
         display: none;
     }
-    
-    .menu-icon {
-        display: block;
+    .dropdown-label{
+        padding: 0;
     }
-
-
-    #nav-links.active a {
+    
+    #nav-links.active a,
+    #nav-links.active .dropdown-container { 
         display: block;
-        float: none;
-        background-color: unset; 
-        margin: 5px 0;
+       
+        padding: 10px;
         color: #fff;
         text-align: left;
-        width: 46px;
-        max-width: 46px;
-        min-width: 46px;
-        transition: background-color 0.3s ease, color 0.3s ease; 
-    }
-    #nav-links.active a:hover{
-        background-color: #fff;
-    color: #4d7ff5;
     }
 
-    
+    .menu-icon { 
+        display: block;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: var(--hover-color);
+    }
+
+  
     #nav-links {
-        text-align: left;
-        padding-left: 40px;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-color);
+        display: none; 
+        flex-direction: column; 
+    }
+
+    #nav-links.active {
+        display: flex;
+    }
+
+    #nav-links.active a,
+    #nav-links.active .dropdown-container { 
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+
+    #nav-links.active a:hover,
+    #nav-links.active .dropdown-container:hover { 
+        background-color: var(--hover-color);
+        color: var(--dark-color);
     }
 }
+
 
 .avatar{
     margin-left: auto;
@@ -153,24 +238,21 @@ nav a:hover {
     top: 0;
     width: 100%;
     z-index: 9999; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow to emphasize the sticky state */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     background-color: var(--bg-color);
 }
 
-/* Optional: To adjust padding or background when sticky */
 .sticky nav {
-    padding: 10px 0; /* Reduce padding to make the sticky navbar more compact if needed */
-    background-color: var(--bg-color); /* Keeps the original background color when sticky */
+    padding: 10px 0; 
+    background-color: var(--bg-color); 
 }
+
+
 section{
     padding: 100px 7%;
 }
 
-footer{
-    background-color: #414141;
-    color: #ffffff;
-    padding: 40px 0;
-}
+
 .home{
    height: 100%;
    background-color: var(--bg-color);
@@ -189,6 +271,7 @@ footer{
  font-size: var(--big-font);
  font-weight: 700;
 }
+  
 .text-change{
     font-size: 1.5rem;
     font-weight: 600;
@@ -225,7 +308,7 @@ vertical-align: top;
 }
 
 .header-btn {
-    background-color: #ef3030;
+    background-color: #f73333;
     padding: 10px;
     text-decoration: none;
     text-transform: uppercase;
@@ -307,6 +390,68 @@ vertical-align: top;
     fill: #ef1616; /* Color change on hover */
 }
 
+@media (max-width: 768px) {
+    section {
+        padding: 50px 5%;
+    }
+
+    .home {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .home-content {
+        max-width: 100%;
+       
+    }
+
+    .home-content h1 {
+        font-size: 2rem; /* Adjust font size */
+    }
+
+    .text-change {
+        font-size: 1.2rem; /* Adjust font size */
+    }
+
+    .header-btn {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .image-container {
+        margin: 0 auto; /* Center the image */
+    }
+
+    .image-container img {
+        width: 200px; /* Adjust image size */
+        margin: 0; /* Remove left margin */
+    }
+
+    .social-btn {
+        text-align: center; /* Center social icons */
+    }
+}
+
+@media (max-width: 480px) {
+    .home-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .text-change {
+        font-size: 1rem;
+    }
+
+    .header-btn {
+        font-size: 0.8rem;
+        padding: 7px;
+    }
+
+    .image-container img {
+        width: 180px;
+    }
+}
+
 .about{
     background-color: var(--nav-text-color);
     color: var(--bg-color);
@@ -328,6 +473,52 @@ vertical-align: top;
 }
 .contact h2 span{
    color: var(--hover-color);
+}
+
+@media (max-width: 768px) {
+    .about {
+        grid-template-columns: 1fr; /* Stack the content vertically */
+        padding: 50px 5%; /* Reduce padding for smaller screens */
+        gap: 20px; /* Increase the gap between elements */
+        text-align: center; /* Center-align text for a cleaner look */
+    }
+
+    .about h2 {
+        font-size: 1.5rem; /* Adjust font size */
+    }
+
+    .about p {
+        font-size: 1rem; /* Adjust paragraph font size */
+        line-height: 1.6;
+    }
+
+    .image-container img {
+        max-width: 200px; /* Further reduce image size */
+    }
+}
+
+@media (max-width: 480px) {
+    .about {
+        padding: 30px 3%; /* Further reduce padding for very small screens */
+    }
+
+    .about h2 {
+        font-size: 1.3rem; /* Smaller font for heading */
+    }
+
+    .about p {
+        font-size: 0.9rem; /* Further reduce font size */
+    }
+
+    .image-container img {
+        max-width: 150px; /* Further reduce image size */
+    }
+}
+
+footer{
+    background-color: #414141;
+    color: #ffffff;
+    padding: 40px 0;
 }
 
 .footer-container {
@@ -361,7 +552,7 @@ vertical-align: top;
     margin-bottom: 10px;
 }
 
-.social-media ul li a {
+.social-media ul li a[target="_blank"] {
     color: #ffffff;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -448,15 +639,46 @@ vertical-align: top;
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;
-        text-align: center;
+        
     }
 
     .footer-container div {
         flex: 1 1 100%;
+        margin-bottom: 20px;
     }
 
     .newsletter input[type="email"] {
         width: 100%;
+    }
+
+    .footer-bottom p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 20px 0;
+    }
+
+    .social-media h4,
+    .newsletter h4,
+    .contact-info h4 {
+        font-size: 18px;
+    }
+
+    .newsletter input[type="email"],
+    .newsletter button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .footer-bottom p {
+        font-size: 12px;
+    }
+
+    .social-media img {
+        width: 24px; /* Further reduce icon size for smaller screens */
     }
 }
 .name_container{
@@ -711,58 +933,3 @@ body.modal-open {
 }
 
 
-.dropdown-container {
-    position: relative;
-}
-
-/* Dropdown label styling */
-.dropdown-label {
-    cursor: pointer;
-    font-weight: 600;
-    padding: 6px 10px;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-}
-
-
-.dropdown-label::after {
-    content: ''; /* Placeholder for the icon */
-    background-image: url('https://img.icons8.com/ios-glyphs/30/ffffff/chevron-down.png'); /* Dropdown icon URL */
-    background-size: 12px 12px;
-    background-repeat: no-repeat;
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-left: 8px;
-    transition: transform 0.3s ease;
-}
-
-/* Rotate the icon when dropdown is open */
-.dropdown-container.active .dropdown-label::after {
-    transform: rotate(180deg);
-}
-
-
-/* Dropdown options styling */
-.dropdown-options {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #ffffff;
-    color: #2e022d;
-    min-width: 100px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.dropdown-options div {
-    padding: 8px;
-    cursor: pointer;
-    text-align: left;
-}
-
-.dropdown-options div:hover {
-    background-color: #f2f2f2;
-}
