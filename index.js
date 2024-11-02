@@ -25,7 +25,7 @@ const dropdownLabel = document.getElementById('dropdownLabel');
 const dropdownOptions = document.getElementById('dropdownOptions');
 
 dropdownLabel.addEventListener('click', () => {
-  dropdownOptions.style.display = dropdownOptions.style.display === 'block' ? 'none' : 'block';
+  dropdownOptions.style.display = dropdownOptions.style.display === 'grid' ? 'none' : 'grid';
 });
 
 function selectOption(optionElement) {

@@ -145,14 +145,16 @@ nav a.selected {
     z-index: 1;
 }
 
-.dropdown-options div {
+.dropdown-options a {
     padding: 8px;
     cursor: pointer;
     text-align: left;
+    color: var(--bg-color);
 }
 
-.dropdown-options div:hover {
+.dropdown-options a:hover {
     background-color: #f2f2f2;
+    text-shadow: unset;
 }
 .menu-icon {
     display: none;
@@ -177,7 +179,6 @@ nav a.selected {
         display: block;
        
         padding: 10px;
-        color: #fff;
         text-align: left;
     }
 
@@ -206,7 +207,6 @@ nav a.selected {
 
     #nav-links.active a,
     #nav-links.active .dropdown-container { 
-        color: #fff;
         padding: 10px 20px;
         text-decoration: none;
     }
