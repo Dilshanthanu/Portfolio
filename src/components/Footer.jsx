@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Facebook, Github, Instagram, Linkedin } from 'lucide-react';
 
 const Footer = () => {
     return (
@@ -22,8 +22,13 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li>
-                                <a href="#" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
+                                <a href="https://www.linkedin.com/in/dilshan-thotapaladeniya-9a23a2264/" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
                                     <Linkedin size={20} /> LinkedIn
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/Dilshanthanu" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
+                                    <Github size={20} /> GitHub
                                 </a>
                             </li>
                             <li>
@@ -68,7 +73,7 @@ const Footer = () => {
 
                 {/* Bottom */}
                 <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
-                    <p>&copy; 2024 Dilshan Thanushka Portfolio. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()}  Dilshan Thanushka Portfolio. All rights reserved.</p>
                     <p className="mt-2 text-[#ff6600]">
                         <a href="/privacy-policy" className="hover:underline">Privacy Policy</a> | <a href="/terms-of-service" className="hover:underline">Terms of Service</a>
                     </p>
