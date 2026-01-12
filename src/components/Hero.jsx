@@ -120,7 +120,7 @@ const Hero = () => {
                     <div className="relative">
                         <div className="absolute inset-0 bg-gradient-to-tr from-primary to-accent rounded-full blur-[40px] opacity-40 animate-pulse"></div>
                         <img
-                            src="./images/my1.jpg"
+                            src="./images/my1.png"
                             alt="Dilshan Thanushka"
                             className="relative w-64 h-64 sm:w-80 sm:h-80 object-cover rounded-2xl shadow-2xl border-2 border-gray-800/50 transform rotate-3 hover:rotate-0 transition-transform duration-500 z-10"
                         />

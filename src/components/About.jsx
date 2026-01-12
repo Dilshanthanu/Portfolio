@@ -23,7 +23,7 @@ const About = () => {
                         <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary rounded-xl blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
                         {/* Using a fallback placeholder if image fails, but should work since we moved it */}
                         <img
-                            src="./images/my2.jpg"
+                            src="./images/my2.png"
                             alt="About Me"
                             className="relative w-80 lg:w-96 rounded-xl shadow-2xl border border-gray-800 z-10 transform transition duration-500 group-hover:scale-105"
                         />
